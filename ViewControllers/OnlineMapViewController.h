@@ -6,7 +6,7 @@
 //
 
 @class MRMapView;
-
+@class Map;
 @interface OnlineMapViewController : UIViewController {
   @private
 	MRMapView *mapView;
@@ -16,5 +16,6 @@
 @property (nonatomic, retain) NSManagedObjectContext *managedObjectContext;
 
 - (void)addMap;
+- (void)addTile:(int)zoom atTileX:(int)x atTileY:(int)y Map:(Map*)newMap;
 
 @end

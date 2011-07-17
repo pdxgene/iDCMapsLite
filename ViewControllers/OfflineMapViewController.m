@@ -54,8 +54,11 @@
 {
     [super viewDidLoad];
     mapView = [[MRMapView alloc] initWithFrame:self.view.bounds mode:iDCMapViewModeOffline];
+    mapView.map = map;
 	mapView.tileProvider = [[MROSMTileProvider new] autorelease];
-	
+    NSLog(@"offline map center: %f, %f", [map.CenterLat floatValue], [map.CenterLong floatValue]);
+    [mapView setCenter:MRMapCoordinateMake([map.CenterLat floatValue], [map.CenterLong floatValue])];
+    [mapView setZoomLevel:[map.Zoom intValue]];
     [self.view addSubview:mapView];
 }
 

@@ -169,13 +169,14 @@ static NSString *const kTileKeyFormat = @"%d_%d_%d.png";
 
 - (void)dealloc {
 	[_cacheDirectory release];
-	
+	[map release];
 	[super dealloc];
 }
 
 
 ///offline
-- (NSData *)onfflineTileAtX:(NSUInteger)x y:(NSUInteger)y zoomLevel:(NSUInteger)zoom forMap:(Map *)aMap{
+- (NSData *)offlineTileAtX:(NSUInteger)x y:(NSUInteger)y zoomLevel:(NSUInteger)zoom forMap:(Map *)aMap{
+    NSLog(@"get offline tile");
     map = aMap;
     
     NSEntityDescription *entity = [NSEntityDescription entityForName:@"Tile" inManagedObjectContext:map.managedObjectContext];
@@ -183,8 +184,9 @@ static NSString *const kTileKeyFormat = @"%d_%d_%d.png";
     NSFetchRequest *fetchRequest = [[NSFetchRequest alloc] init];
     [fetchRequest setEntity:entity];
     
+    NSLog(@"fetch: x: %d, y: %d, z: %d", x,y,zoom);
 	
-    NSPredicate *predicate = [NSPredicate predicateWithFormat:@"x=%d AND y=%d AND zoom=%d",x, y,zoom];
+    NSPredicate *predicate = [NSPredicate predicateWithFormat:@"x=%d AND y=%d AND z=%d",x, y,zoom];
     [fetchRequest setPredicate:predicate];
     
     NSMutableArray *results =  [[NSMutableArray alloc] initWithArray:[map.managedObjectContext executeFetchRequest:fetchRequest error:nil]];
@@ -194,6 +196,7 @@ static NSString *const kTileKeyFormat = @"%d_%d_%d.png";
     if (results && [results count] >0) {
         Tile *tile = (Tile *)[results objectAtIndex:0];
         data = [[NSData alloc] initWithData:tile.imgData];
+        NSLog(@"tile in db");
     }
     [results release];
     if (data) {

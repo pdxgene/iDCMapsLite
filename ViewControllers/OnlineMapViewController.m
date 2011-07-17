@@ -114,7 +114,104 @@ typedef struct _iDCTileDef  iDCTileDef;
     return [urls autorelease];
 }
 
+
 - (void)saveMap:(id)sender{
+    MRMapCoordinate center  = mapView.center;
+    float lon = center.longitude;
+    float lat = center.latitude;
+    
+    //create an instance of the Map object in Core Data:
+//    [self addMap];
+	NSLog(@"add map to list");
+    
+	/*
+	 Create a new instance of the Map entity.
+	 */
+	Map *newMap = (Map *)[NSEntityDescription insertNewObjectForEntityForName:@"Map" inManagedObjectContext:managedObjectContext];
+	
+    [newMap setTitle:@"Test map title"];
+    // Configure the new event with information from the location.
+//    MRMapCoordinate center = mapView.center;
+//    [newMap setCenterLat:[NSNumber numberWithDouble:center.latitude]];
+    [newMap setCenterLat:[NSNumber numberWithFloat:lat]];
+    [newMap setCenterLong:[NSNumber numberWithFloat:lon]];
+ //   [newMap setCenterLong:[NSNumber numberWithDouble:center.longitude]];
+    [newMap setZoom:[NSNumber numberWithInt:mapView.zoomLevel]];
+    NSLog(@"newmap lat: %f, long: %f", [newMap.CenterLat floatValue], [newMap.CenterLong floatValue]);
+    
+	// If it's not possible to get a location, then start with it blank.
+	// Should be the location's timestamp, but this will be constant for simulator.
+	// [event setCreationDate:[location timestamp]];
+    
+	// Commit the change.
+	NSError *error;
+	if (![managedObjectContext save:&error]) {
+		// Handle the error.
+	}
+	
+	/*
+	 Since this is a new event, and events are displayed with most recent events at the top of the list,
+	 add the new event to the beginning of the events array; then redisplay the table view.
+	 */
+    NSLog(@"added");
+    
+    int z = mapView.zoomLevel;
+    
+    int solx = (int)(floor((lon + 180.0) / 360.0 * pow(2.0, z)));
+    int soly = (int)(floor((1.0 - log( tan(lat * M_PI/180.0) + 1.0 / cos(lat * M_PI/180.0)) / M_PI) / 2.0 * pow(2.0, z)));
+    
+    NSLog(@"solx = %d", solx);
+    NSLog(@"soly = %d", soly);
+    NSLog(@"zoom = %d", z);
+    
+    //1. Save the tile covering this lat/lng:
+    NSLog(@"this tile:");
+    [self addTile:z atTileX:solx atTileY:soly Map:newMap];
+    
+    NSLog(@"Neighbor tiles:");
+    //1. Save 8 "neighbor" tiles that surround the tile covering this lat/lng:
+    [self addTile:z atTileX:solx+1 atTileY:soly+1 Map:newMap];
+    [self addTile:z atTileX:solx+1 atTileY:soly-1 Map:newMap];
+    [self addTile:z atTileX:solx atTileY:soly+1 Map:newMap];
+    [self addTile:z atTileX:solx+1 atTileY:soly Map:newMap];
+    [self addTile:z atTileX:solx-1 atTileY:soly Map:newMap];
+    [self addTile:z atTileX:solx atTileY:soly-1 Map:newMap];
+    [self addTile:z atTileX:solx-1 atTileY:soly+1 Map:newMap];
+    [self addTile:z atTileX:solx-1 atTileY:soly-1 Map:newMap]; 
+    
+    NSLog(@"zoom in one level:");
+    //save the four tiles one level closer (zoom in)
+    int zl = z+1;
+    //2x,2y
+    int solxl = 2*solx;
+    int solyl = 2*soly;
+    NSLog(@"url: http://c.tile.openstreetmaps.org/%d/%d/%d.png", zl, solxl, solyl);
+    //2x+1, 2y
+    //2x,2y+1
+    //2x+1, 2y+1
+    
+    
+    NSLog(@"zoom out one level:");
+    //save four tiles one level further (zoom out)
+    int zu = z-1;
+    int solxu = solx/2;
+    int solyu = soly/2;
+    int solx1u = solx/2 + 1;
+    int soly1u = soly/2 + 1;
+    
+    //x/2,y/2
+    NSLog(@"url: http://c.tile.openstreetmaps.org/%d/%d/%d.png", zu, solxu, solyu);
+    //x/2+1, y/2
+    NSLog(@"url: http://c.tile.openstreetmaps.org/%d/%d/%d.png", zu, solx1u, solyu);
+    //x/2,y/2+1
+    NSLog(@"url: http://c.tile.openstreetmaps.org/%d/%d/%d.png", zu, solxu, soly1u);
+    //x/2+1, 2y+1
+    NSLog(@"url: http://c.tile.openstreetmaps.org/%d/%d/%d.png", zu, solx1u, soly1u);
+    
+    
+}
+
+/*- (void)saveMap:(id)sender{
     MRMapCoordinate center  = mapView.center;
     float lon = center.longitude;
     float lat = center.latitude;
@@ -177,29 +274,36 @@ typedef struct _iDCTileDef  iDCTileDef;
 //        NSLog(@"%@", str);
 //    }
 }
+*/
 
 /**
- Add a map to the list
+ Add a tile to the list
  */
-- (void)addMap {
+- (void)addTile:(int)zoom atTileX:(int)x atTileY:(int)y Map:(Map*)newMap{
+    NSLog(@"add tile from data:");
+    NSLog(@"zoom: %d", zoom);
+    NSLog(@"x: %d", x);
+    NSLog(@"y: %d", y);
     
-	NSLog(@"add map to list");
+    //fetch and save map tile from OSM tile server:
+    NSString *urlString = [[[NSString alloc] initWithFormat:@"http://c.tile.openstreetmaps.org/%d/%d/%d.png", zoom, x, y] autorelease];
+    NSLog(@"fetch and save: %@", urlString);
+    
+    NSURL *newTileImageUrl = [NSURL URLWithString:urlString];
+    NSData *newTileImageData = [[NSData alloc] initWithContentsOfURL:newTileImageUrl];
+    
     
 	/*
-	 Create a new instance of the Map entity.
+	 Create a new instance of the Tile entity.
 	 */
-	Map *newMap = (Map *)[NSEntityDescription insertNewObjectForEntityForName:@"Map" inManagedObjectContext:managedObjectContext];
-	
-    [newMap setTitle:@"Test map title"];
-    // Configure the new event with information from the location.
-    MRMapCoordinate center = mapView.center;
-    [newMap setCenterLat:[NSNumber numberWithDouble:center.latitude]];
-    [newMap setCenterLng:[NSNumber numberWithDouble:center.longitude]];
-
-	// If it's not possible to get a location, then start with it blank.
-	// Should be the location's timestamp, but this will be constant for simulator.
-	// [event setCreationDate:[location timestamp]];
-    
+	Tile *newTile = (Tile *)[NSEntityDescription insertNewObjectForEntityForName:@"Tile" inManagedObjectContext:managedObjectContext];
+    [newMap addTilesObject:newTile];
+    [newTile setX:[NSNumber numberWithInt:x]];
+    [newTile setY:[NSNumber numberWithInt:y]];
+    [newTile setZ:[NSNumber numberWithInt:zoom]];
+    [newTile setImgData:newTileImageData];
+    [newTileImageData release];
+    NSLog(@"Tile: x: %d, y: %d, z: %d", [newTile.x intValue], [newTile.y intValue], [newTile.z intValue]);
 	// Commit the change.
 	NSError *error;
 	if (![managedObjectContext save:&error]) {
@@ -211,6 +315,16 @@ typedef struct _iDCTileDef  iDCTileDef;
 	 add the new event to the beginning of the events array; then redisplay the table view.
 	 */
     NSLog(@"added");
+    
+}
+
+
+/**
+ Add a map to the list
+ */
+- (void)addMap {
+    
+
     
 }
 

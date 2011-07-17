@@ -13,15 +13,20 @@
 #import "MRProjection.h"
 #import "MRTileCache.h"
 #import "MRTileProvider.h"
+#import "Map.h"
 
 @interface MRMapBaseView : UIView {
   @private
+    Map *map;
+    BOOL offlineMode;
 	MRTileCache *_cache;
 	id < MRTileProvider > _tileProvider;
 }
 
 @property (nonatomic, assign) id < MRTileProvider > tileProvider;
+@property (nonatomic, retain) Map *map;
 
+- (id)initWithFrame:(CGRect)frame offlineMode:(BOOL)value;
 - (void)configureLayer;
 - (NSString *)cacheDirectory;
 
@@ -41,6 +46,7 @@
 
 @synthesize tileProvider = _tileProvider;
 @synthesize mapProjection = _mapProjection;
+@synthesize map;
 @dynamic center, zoomLevel;
 
 - (id)initWithFrame:(CGRect)frame mode:(iDCMapViewMode)mode{
@@ -96,7 +102,15 @@
 
 - (void)configureLayers {
 	if (!_baseView) {
-		_baseView = [[MRMapBaseView alloc] initWithFrame:[self bounds]];
+        if (mapMode == iDCMapViewModeOnline) {
+            _baseView = [[MRMapBaseView alloc] initWithFrame:[self bounds] offlineMode:NO];
+            _baseView.map = nil;
+        }
+        else if (mapMode == iDCMapViewModeOffline){
+            _baseView = [[MRMapBaseView alloc] initWithFrame:[self bounds] offlineMode:YES];
+            _baseView.map = map;
+        }
+		
 		_baseView.multipleTouchEnabled = YES;
 		
 		[self insertSubview:_baseView atIndex:0];
@@ -213,7 +227,7 @@
 	[_baseView release];
 	[_tileProvider release];
 	[_mapProjection release];
-	
+	[map release];
 	[super dealloc];
 }
 
@@ -223,26 +237,36 @@
 @implementation MRMapBaseView
 
 @synthesize tileProvider;
+@synthesize map;
 
 static NSString *const kLastFlushedKey = @"lastFlushedTileCache";
 
 #define kDay 60 * 60 * 24
 
-- (id)initWithFrame:(CGRect)frame {
+- (id)initWithFrame:(CGRect)frame offlineMode:(BOOL)value{
 	self = [super initWithFrame:frame];
 	if (self) {
-        _cache = [[MRTileCache alloc] initWithCacheDirectory:[self cacheDirectory]];
         
-		
-		NSUserDefaults *defs = [NSUserDefaults standardUserDefaults];
-		NSDate *date = [defs valueForKey:kLastFlushedKey];
-		
-		if (!date || -[date timeIntervalSinceNow] > kDay) {
-			[_cache flushOldCaches];
-			
-			[defs setValue:[NSDate date] forKey:kLastFlushedKey];
-			[defs synchronize];
-		}
+        offlineMode = value;
+        
+        //if (!offlineMode) {
+            _cache = [[MRTileCache alloc] initWithCacheDirectory:[self cacheDirectory]];
+            
+            
+            NSUserDefaults *defs = [NSUserDefaults standardUserDefaults];
+            NSDate *date = [defs valueForKey:kLastFlushedKey];
+            
+            if (!date || -[date timeIntervalSinceNow] > kDay) {
+                [_cache flushOldCaches];
+                
+                [defs setValue:[NSDate date] forKey:kLastFlushedKey];
+                [defs synchronize];
+            }
+//        }
+//        else{
+//            
+//        }
+
 	}
 	return self;
 }
@@ -305,17 +329,39 @@ static NSString *const kLastFlushedKey = @"lastFlushedTileCache";
 	NSUInteger x = floor(crect.origin.x / crect.size.width);
 	NSUInteger y = floor(crect.origin.y / crect.size.width);
 	
-	NSData *tileData = [[_cache tileAtX:x y:y zoomLevel:zoomLevel] retain];
-	
-	if (!tileData) {
-		NSURL *tileURL = [_tileProvider tileURLForTile:x y:y zoomLevel:zoomLevel];
-		tileData = [[NSData alloc] initWithContentsOfURL:tileURL];
-		
-		if (!tileData)
-			return;
-		
-		[_cache setTile:tileData x:x y:y zoomLevel:zoomLevel];
-	}
+    NSData *tileData = nil;
+    
+    if (offlineMode) {
+        NSLog(@"load offline tile from core data: %d, %d, %d", x,y,zoomLevel);
+        tileData = [[_cache offlineTileAtX:x y:y zoomLevel:zoomLevel forMap:map] retain];
+        if (!tileData) {
+            /*
+            NSURL *tileURL = [_tileProvider tileURLForTile:x y:y zoomLevel:zoomLevel];
+            tileData = [[NSData alloc] initWithContentsOfURL:tileURL];
+            
+            if (!tileData)
+                return;
+            
+            [_cache setTile:tileData x:x y:y zoomLevel:zoomLevel];
+             */
+        }
+    }
+    else{
+        NSLog(@"load online tile from cache or web");
+        tileData = [[_cache tileAtX:x y:y zoomLevel:zoomLevel] retain];
+        NSLog(@"x: %d, y: %d", x, y);
+        
+        if (!tileData) {
+            NSURL *tileURL = [_tileProvider tileURLForTile:x y:y zoomLevel:zoomLevel];
+            tileData = [[NSData alloc] initWithContentsOfURL:tileURL];
+            
+            if (!tileData)
+                return;
+            
+            [_cache setTile:tileData x:x y:y zoomLevel:zoomLevel];
+        }
+    }
+
 	
 	UIImage *tileImage = [[UIImage alloc] initWithData:tileData];
 	[tileData release];
@@ -326,7 +372,7 @@ static NSString *const kLastFlushedKey = @"lastFlushedTileCache";
 
 - (void)dealloc {
 	[_cache release];
-	
+	[map release];
 	[super dealloc];
 }
 

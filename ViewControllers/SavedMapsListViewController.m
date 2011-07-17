@@ -46,7 +46,7 @@
 		 abort() causes the application to generate a crash log and terminate. You should not use this function in a shipping application, although it may be useful during development. If it is not possible to recover from the error, display an alert panel that instructs the user to quit the application by pressing the Home button.
 		 */
 		NSLog(@"Unresolved error %@, %@", error, [error userInfo]);
-		abort();
+//		abort();
 	}	
 }
 
@@ -126,7 +126,7 @@
     
     // Configure the cell...
     Map *map = (Map *)[fetchedResultsController objectAtIndexPath:indexPath];
-    cell.textLabel.text = map.title;
+    cell.textLabel.text = map.Title;
     
     return cell;
 }
@@ -204,7 +204,7 @@
         [fetchRequest setEntity:entity];
         
         // Edit the sort key as appropriate.
-        NSSortDescriptor *sortDescriptor = [[NSSortDescriptor alloc] initWithKey:@"title" ascending:YES];
+        NSSortDescriptor *sortDescriptor = [[NSSortDescriptor alloc] initWithKey:@"Title" ascending:YES];
         NSArray *sortDescriptors = [[NSArray alloc] initWithObjects:sortDescriptor, nil];
         
         [fetchRequest setSortDescriptors:sortDescriptors];

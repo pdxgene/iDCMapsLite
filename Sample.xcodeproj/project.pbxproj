@@ -13,19 +13,19 @@
 		1DF5F4E00D08C38300B7A737 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1DF5F4DF0D08C38300B7A737 /* UIKit.framework */; };
 		288765A50DF7441C002DB57D /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 288765A40DF7441C002DB57D /* CoreGraphics.framework */; };
 		28AD733F0D9D9553002E5188 /* MainWindow.xib in Resources */ = {isa = PBXBuildFile; fileRef = 28AD733E0D9D9553002E5188 /* MainWindow.xib */; };
-		379B9BA413D3590E00C50804 /* MRMapTypes.m in Sources */ = {isa = PBXBuildFile; fileRef = 379B9B9913D3590E00C50804 /* MRMapTypes.m */; };
-		379B9BA513D3590E00C50804 /* MRMapView.m in Sources */ = {isa = PBXBuildFile; fileRef = 379B9B9B13D3590E00C50804 /* MRMapView.m */; };
-		379B9BA613D3590E00C50804 /* MRMercatorProjection.m in Sources */ = {isa = PBXBuildFile; fileRef = 379B9B9D13D3590E00C50804 /* MRMercatorProjection.m */; };
-		379B9BA713D3590E00C50804 /* MROSMTileProvider.m in Sources */ = {isa = PBXBuildFile; fileRef = 379B9B9F13D3590E00C50804 /* MROSMTileProvider.m */; };
-		379B9BA813D3590E00C50804 /* MRTileCache.m in Sources */ = {isa = PBXBuildFile; fileRef = 379B9BA213D3590E00C50804 /* MRTileCache.m */; };
 		37E2B02813D2F84D00848060 /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 37E2B02613D2F83F00848060 /* CoreData.framework */; };
 		37E2B02B13D2F8B400848060 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 37E2B02913D2F8A800848060 /* CoreLocation.framework */; };
-		37E2B03213D2FB5E00848060 /* SavedMaps.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 37E2B03013D2FB5E00848060 /* SavedMaps.xcdatamodeld */; };
-		37E2B04313D2FD3D00848060 /* Tile.m in Sources */ = {isa = PBXBuildFile; fileRef = 37E2B04213D2FD3D00848060 /* Tile.m */; };
 		37E2B04A13D2FD5B00848060 /* OfflineMapViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 37E2B04513D2FD5B00848060 /* OfflineMapViewController.m */; };
 		37E2B04B13D2FD5C00848060 /* OnlineMapViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 37E2B04713D2FD5B00848060 /* OnlineMapViewController.m */; };
 		37E2B04C13D2FD5C00848060 /* SavedMapsListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 37E2B04913D2FD5B00848060 /* SavedMapsListViewController.m */; };
-		37E2B04F13D3003900848060 /* Map.m in Sources */ = {isa = PBXBuildFile; fileRef = 37E2B04E13D3003900848060 /* Map.m */; };
+		B08C52DC13D35D62003EBCDE /* SavedMaps.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = B08C52DA13D35D62003EBCDE /* SavedMaps.xcdatamodeld */; };
+		B08C52EE13D35F4F003EBCDE /* Tile.m in Sources */ = {isa = PBXBuildFile; fileRef = B08C52ED13D35F4F003EBCDE /* Tile.m */; };
+		B08C52F113D35F50003EBCDE /* Map.m in Sources */ = {isa = PBXBuildFile; fileRef = B08C52F013D35F50003EBCDE /* Map.m */; };
+		B08C52FE13D36498003EBCDE /* MRMapTypes.m in Sources */ = {isa = PBXBuildFile; fileRef = B08C52F313D36498003EBCDE /* MRMapTypes.m */; };
+		B08C52FF13D36498003EBCDE /* MRMapView.m in Sources */ = {isa = PBXBuildFile; fileRef = B08C52F513D36498003EBCDE /* MRMapView.m */; };
+		B08C530013D36498003EBCDE /* MRMercatorProjection.m in Sources */ = {isa = PBXBuildFile; fileRef = B08C52F713D36498003EBCDE /* MRMercatorProjection.m */; };
+		B08C530113D36498003EBCDE /* MROSMTileProvider.m in Sources */ = {isa = PBXBuildFile; fileRef = B08C52F913D36498003EBCDE /* MROSMTileProvider.m */; };
+		B08C530213D36498003EBCDE /* MRTileCache.m in Sources */ = {isa = PBXBuildFile; fileRef = B08C52FC13D36498003EBCDE /* MRTileCache.m */; };
 		C997167C1220C4AD00022812 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C997167B1220C4AD00022812 /* QuartzCore.framework */; };
 /* End PBXBuildFile section */
 
@@ -39,32 +39,32 @@
 		28AD733E0D9D9553002E5188 /* MainWindow.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MainWindow.xib; sourceTree = "<group>"; };
 		29B97316FDCFA39411CA2CEA /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		32CA4F630368D1EE00C91783 /* Sample_Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Sample_Prefix.pch; sourceTree = "<group>"; };
-		379B9B9813D3590E00C50804 /* MRMapTypes.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MRMapTypes.h; path = Sources/MRMapTypes.h; sourceTree = SOURCE_ROOT; };
-		379B9B9913D3590E00C50804 /* MRMapTypes.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MRMapTypes.m; path = Sources/MRMapTypes.m; sourceTree = SOURCE_ROOT; };
-		379B9B9A13D3590E00C50804 /* MRMapView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MRMapView.h; path = Sources/MRMapView.h; sourceTree = SOURCE_ROOT; };
-		379B9B9B13D3590E00C50804 /* MRMapView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MRMapView.m; path = Sources/MRMapView.m; sourceTree = SOURCE_ROOT; };
-		379B9B9C13D3590E00C50804 /* MRMercatorProjection.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MRMercatorProjection.h; path = Sources/MRMercatorProjection.h; sourceTree = SOURCE_ROOT; };
-		379B9B9D13D3590E00C50804 /* MRMercatorProjection.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MRMercatorProjection.m; path = Sources/MRMercatorProjection.m; sourceTree = SOURCE_ROOT; };
-		379B9B9E13D3590E00C50804 /* MROSMTileProvider.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MROSMTileProvider.h; path = Sources/MROSMTileProvider.h; sourceTree = SOURCE_ROOT; };
-		379B9B9F13D3590E00C50804 /* MROSMTileProvider.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MROSMTileProvider.m; path = Sources/MROSMTileProvider.m; sourceTree = SOURCE_ROOT; };
-		379B9BA013D3590E00C50804 /* MRProjection.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MRProjection.h; path = Sources/MRProjection.h; sourceTree = SOURCE_ROOT; };
-		379B9BA113D3590E00C50804 /* MRTileCache.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MRTileCache.h; path = Sources/MRTileCache.h; sourceTree = SOURCE_ROOT; };
-		379B9BA213D3590E00C50804 /* MRTileCache.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MRTileCache.m; path = Sources/MRTileCache.m; sourceTree = SOURCE_ROOT; };
-		379B9BA313D3590E00C50804 /* MRTileProvider.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MRTileProvider.h; path = Sources/MRTileProvider.h; sourceTree = SOURCE_ROOT; };
 		37E2B02613D2F83F00848060 /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
 		37E2B02913D2F8A800848060 /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
-		37E2B03113D2FB5E00848060 /* SavedMaps.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = SavedMaps.xcdatamodel; sourceTree = "<group>"; };
-		37E2B04113D2FD3D00848060 /* Tile.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Tile.h; sourceTree = "<group>"; };
-		37E2B04213D2FD3D00848060 /* Tile.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Tile.m; sourceTree = "<group>"; };
 		37E2B04413D2FD5B00848060 /* OfflineMapViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OfflineMapViewController.h; sourceTree = "<group>"; };
 		37E2B04513D2FD5B00848060 /* OfflineMapViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OfflineMapViewController.m; sourceTree = "<group>"; };
 		37E2B04613D2FD5B00848060 /* OnlineMapViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OnlineMapViewController.h; sourceTree = "<group>"; };
 		37E2B04713D2FD5B00848060 /* OnlineMapViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OnlineMapViewController.m; sourceTree = "<group>"; };
 		37E2B04813D2FD5B00848060 /* SavedMapsListViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SavedMapsListViewController.h; sourceTree = "<group>"; };
 		37E2B04913D2FD5B00848060 /* SavedMapsListViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SavedMapsListViewController.m; sourceTree = "<group>"; };
-		37E2B04D13D3003900848060 /* Map.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Map.h; sourceTree = "<group>"; };
-		37E2B04E13D3003900848060 /* Map.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Map.m; sourceTree = "<group>"; };
 		8D1107310486CEB800E47090 /* Sample-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "Sample-Info.plist"; plistStructureDefinitionIdentifier = "com.apple.xcode.plist.structure-definition.iphone.info-plist"; sourceTree = "<group>"; };
+		B08C52DB13D35D62003EBCDE /* SavedMaps.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = SavedMaps.xcdatamodel; sourceTree = "<group>"; };
+		B08C52EC13D35F4F003EBCDE /* Tile.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Tile.h; sourceTree = "<group>"; };
+		B08C52ED13D35F4F003EBCDE /* Tile.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Tile.m; sourceTree = "<group>"; };
+		B08C52EF13D35F50003EBCDE /* Map.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Map.h; sourceTree = "<group>"; };
+		B08C52F013D35F50003EBCDE /* Map.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Map.m; sourceTree = "<group>"; };
+		B08C52F213D36498003EBCDE /* MRMapTypes.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MRMapTypes.h; path = Sources/MRMapTypes.h; sourceTree = SOURCE_ROOT; };
+		B08C52F313D36498003EBCDE /* MRMapTypes.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MRMapTypes.m; path = Sources/MRMapTypes.m; sourceTree = SOURCE_ROOT; };
+		B08C52F413D36498003EBCDE /* MRMapView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MRMapView.h; path = Sources/MRMapView.h; sourceTree = SOURCE_ROOT; };
+		B08C52F513D36498003EBCDE /* MRMapView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MRMapView.m; path = Sources/MRMapView.m; sourceTree = SOURCE_ROOT; };
+		B08C52F613D36498003EBCDE /* MRMercatorProjection.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MRMercatorProjection.h; path = Sources/MRMercatorProjection.h; sourceTree = SOURCE_ROOT; };
+		B08C52F713D36498003EBCDE /* MRMercatorProjection.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MRMercatorProjection.m; path = Sources/MRMercatorProjection.m; sourceTree = SOURCE_ROOT; };
+		B08C52F813D36498003EBCDE /* MROSMTileProvider.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MROSMTileProvider.h; path = Sources/MROSMTileProvider.h; sourceTree = SOURCE_ROOT; };
+		B08C52F913D36498003EBCDE /* MROSMTileProvider.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MROSMTileProvider.m; path = Sources/MROSMTileProvider.m; sourceTree = SOURCE_ROOT; };
+		B08C52FA13D36498003EBCDE /* MRProjection.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MRProjection.h; path = Sources/MRProjection.h; sourceTree = SOURCE_ROOT; };
+		B08C52FB13D36498003EBCDE /* MRTileCache.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MRTileCache.h; path = Sources/MRTileCache.h; sourceTree = SOURCE_ROOT; };
+		B08C52FC13D36498003EBCDE /* MRTileCache.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MRTileCache.m; path = Sources/MRTileCache.m; sourceTree = SOURCE_ROOT; };
+		B08C52FD13D36498003EBCDE /* MRTileProvider.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MRTileProvider.h; path = Sources/MRTileProvider.h; sourceTree = SOURCE_ROOT; };
 		C997167B1220C4AD00022812 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
 /* End PBXFileReference section */
 
@@ -89,7 +89,6 @@
 			isa = PBXGroup;
 			children = (
 				C965CF081222B41A005CF012 /* Sample */,
-				C965CEC11222B2A3005CF012 /* Sources */,
 			);
 			path = Classes;
 			sourceTree = "<group>";
@@ -105,6 +104,7 @@
 		29B97314FDCFA39411CA2CEA /* CustomTemplate */ = {
 			isa = PBXGroup;
 			children = (
+				C965CEC11222B2A3005CF012 /* Sources */,
 				37E2B03413D2FD0C00848060 /* ManagedObjects */,
 				37E2B03313D2FCFE00848060 /* ViewControllers */,
 				080E96DDFE201D6D7F000001 /* Classes */,
@@ -128,9 +128,9 @@
 		29B97317FDCFA39411CA2CEA /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				B08C52DA13D35D62003EBCDE /* SavedMaps.xcdatamodeld */,
 				28AD733E0D9D9553002E5188 /* MainWindow.xib */,
 				8D1107310486CEB800E47090 /* Sample-Info.plist */,
-				37E2B03013D2FB5E00848060 /* SavedMaps.xcdatamodeld */,
 			);
 			name = Resources;
 			sourceTree = "<group>";
@@ -164,10 +164,10 @@
 		37E2B03413D2FD0C00848060 /* ManagedObjects */ = {
 			isa = PBXGroup;
 			children = (
-				37E2B04D13D3003900848060 /* Map.h */,
-				37E2B04E13D3003900848060 /* Map.m */,
-				37E2B04113D2FD3D00848060 /* Tile.h */,
-				37E2B04213D2FD3D00848060 /* Tile.m */,
+				B08C52EF13D35F50003EBCDE /* Map.h */,
+				B08C52F013D35F50003EBCDE /* Map.m */,
+				B08C52EC13D35F4F003EBCDE /* Tile.h */,
+				B08C52ED13D35F4F003EBCDE /* Tile.m */,
 			);
 			path = ManagedObjects;
 			sourceTree = "<group>";
@@ -175,18 +175,18 @@
 		C965CEC11222B2A3005CF012 /* Sources */ = {
 			isa = PBXGroup;
 			children = (
-				379B9B9813D3590E00C50804 /* MRMapTypes.h */,
-				379B9B9913D3590E00C50804 /* MRMapTypes.m */,
-				379B9B9A13D3590E00C50804 /* MRMapView.h */,
-				379B9B9B13D3590E00C50804 /* MRMapView.m */,
-				379B9B9C13D3590E00C50804 /* MRMercatorProjection.h */,
-				379B9B9D13D3590E00C50804 /* MRMercatorProjection.m */,
-				379B9B9E13D3590E00C50804 /* MROSMTileProvider.h */,
-				379B9B9F13D3590E00C50804 /* MROSMTileProvider.m */,
-				379B9BA013D3590E00C50804 /* MRProjection.h */,
-				379B9BA113D3590E00C50804 /* MRTileCache.h */,
-				379B9BA213D3590E00C50804 /* MRTileCache.m */,
-				379B9BA313D3590E00C50804 /* MRTileProvider.h */,
+				B08C52F213D36498003EBCDE /* MRMapTypes.h */,
+				B08C52F313D36498003EBCDE /* MRMapTypes.m */,
+				B08C52F413D36498003EBCDE /* MRMapView.h */,
+				B08C52F513D36498003EBCDE /* MRMapView.m */,
+				B08C52F613D36498003EBCDE /* MRMercatorProjection.h */,
+				B08C52F713D36498003EBCDE /* MRMercatorProjection.m */,
+				B08C52F813D36498003EBCDE /* MROSMTileProvider.h */,
+				B08C52F913D36498003EBCDE /* MROSMTileProvider.m */,
+				B08C52FA13D36498003EBCDE /* MRProjection.h */,
+				B08C52FB13D36498003EBCDE /* MRTileCache.h */,
+				B08C52FC13D36498003EBCDE /* MRTileCache.m */,
+				B08C52FD13D36498003EBCDE /* MRTileProvider.h */,
 			);
 			name = Sources;
 			path = ../Sources;
@@ -263,17 +263,17 @@
 			files = (
 				1D60589B0D05DD56006BFB54 /* main.m in Sources */,
 				1D3623260D0F684500981E51 /* SampleAppDelegate.m in Sources */,
-				37E2B03213D2FB5E00848060 /* SavedMaps.xcdatamodeld in Sources */,
-				37E2B04313D2FD3D00848060 /* Tile.m in Sources */,
 				37E2B04A13D2FD5B00848060 /* OfflineMapViewController.m in Sources */,
 				37E2B04B13D2FD5C00848060 /* OnlineMapViewController.m in Sources */,
 				37E2B04C13D2FD5C00848060 /* SavedMapsListViewController.m in Sources */,
-				37E2B04F13D3003900848060 /* Map.m in Sources */,
-				379B9BA413D3590E00C50804 /* MRMapTypes.m in Sources */,
-				379B9BA513D3590E00C50804 /* MRMapView.m in Sources */,
-				379B9BA613D3590E00C50804 /* MRMercatorProjection.m in Sources */,
-				379B9BA713D3590E00C50804 /* MROSMTileProvider.m in Sources */,
-				379B9BA813D3590E00C50804 /* MRTileCache.m in Sources */,
+				B08C52DC13D35D62003EBCDE /* SavedMaps.xcdatamodeld in Sources */,
+				B08C52EE13D35F4F003EBCDE /* Tile.m in Sources */,
+				B08C52F113D35F50003EBCDE /* Map.m in Sources */,
+				B08C52FE13D36498003EBCDE /* MRMapTypes.m in Sources */,
+				B08C52FF13D36498003EBCDE /* MRMapView.m in Sources */,
+				B08C530013D36498003EBCDE /* MRMercatorProjection.m in Sources */,
+				B08C530113D36498003EBCDE /* MROSMTileProvider.m in Sources */,
+				B08C530213D36498003EBCDE /* MRTileCache.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -311,6 +311,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
+				CODE_SIGN_IDENTITY = "iPhone Developer: Eugene Ehrbar (G59S565CSU)";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				GCC_C_LANGUAGE_STANDARD = c99;
 				GCC_PREPROCESSOR_DEFINITIONS = "DEBUG=1";
@@ -320,6 +321,7 @@
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 4.3;
 				PREBINDING = NO;
+				PROVISIONING_PROFILE = "CD654271-63DB-4EB5-9C60-53FE8AA431EA";
 				RUN_CLANG_STATIC_ANALYZER = YES;
 				SDKROOT = iphoneos;
 			};
@@ -329,6 +331,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
+				CODE_SIGN_IDENTITY = "iPhone Developer: Eugene Ehrbar (G59S565CSU)";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				GCC_C_LANGUAGE_STANDARD = c99;
 				GCC_PREPROCESSOR_DEFINITIONS = "DEBUG=1";
@@ -339,6 +342,7 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 4.3;
 				OTHER_CFLAGS = "-DNS_BLOCK_ASSERTIONS=1";
 				PREBINDING = NO;
+				PROVISIONING_PROFILE = "CD654271-63DB-4EB5-9C60-53FE8AA431EA";
 				RUN_CLANG_STATIC_ANALYZER = YES;
 				SDKROOT = iphoneos;
 			};
@@ -368,12 +372,12 @@
 /* End XCConfigurationList section */
 
 /* Begin XCVersionGroup section */
-		37E2B03013D2FB5E00848060 /* SavedMaps.xcdatamodeld */ = {
+		B08C52DA13D35D62003EBCDE /* SavedMaps.xcdatamodeld */ = {
 			isa = XCVersionGroup;
 			children = (
-				37E2B03113D2FB5E00848060 /* SavedMaps.xcdatamodel */,
+				B08C52DB13D35D62003EBCDE /* SavedMaps.xcdatamodel */,
 			);
-			currentVersion = 37E2B03113D2FB5E00848060 /* SavedMaps.xcdatamodel */;
+			currentVersion = B08C52DB13D35D62003EBCDE /* SavedMaps.xcdatamodel */;
 			path = SavedMaps.xcdatamodeld;
 			sourceTree = "<group>";
 			versionGroupType = wrapper.xcdatamodel;

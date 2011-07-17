@@ -2,8 +2,8 @@
 //  Map.h
 //  Sample
 //
-//  Created by Grégoire Aubin on 17/07/11.
-//  Copyright (c) 2011 __MyCompanyName__. All rights reserved.
+//  Created by Gene Ehrbar on 7/17/11.
+//  Copyright (c) 2011 ISITE Design. All rights reserved.
 //
 
 #import <Foundation/Foundation.h>
@@ -14,19 +14,16 @@
 @interface Map : NSManagedObject {
 @private
 }
-@property (nonatomic, retain) NSString * title;
-@property (nonatomic, retain) NSNumber * centerLng;
-@property (nonatomic, retain) NSNumber * centerLat;
-@property (nonatomic, retain) NSNumber * zoomMax;
-@property (nonatomic, retain) NSNumber * zoomMin;
-@property (nonatomic, retain) NSSet *tiles;
-@end
-
-@interface Map (CoreDataGeneratedAccessors)
+@property (nonatomic, retain) NSNumber * Size;
+@property (nonatomic, retain) NSNumber * Zoom;
+@property (nonatomic, retain) NSNumber * CenterLong;
+@property (nonatomic, retain) NSDecimalNumber * longDelta;
+@property (nonatomic, retain) NSDecimalNumber * latDelta;
+@property (nonatomic, retain) NSString * Provider;
+@property (nonatomic, retain) NSString * Title;
+@property (nonatomic, retain) NSNumber * CenterLat;
+@property (nonatomic, retain) NSSet* tiles;
 
 - (void)addTilesObject:(Tile *)value;
-- (void)removeTilesObject:(Tile *)value;
-- (void)addTiles:(NSSet *)values;
-- (void)removeTiles:(NSSet *)values;
 
 @end

@@ -12,7 +12,7 @@ typedef enum {
     iDCMapViewModeOffline,
 } iDCMapViewMode;
 
-@class MRMapBaseView;
+@class MRMapBaseView, Map;
 @protocol MRTileProvider, MRProjection;
 
 /*
@@ -24,6 +24,7 @@ typedef enum {
 
 @interface MRMapView : UIScrollView < UIScrollViewDelegate > {
   @private
+    Map *map;
 	MRMapBaseView *_baseView;
 	iDCMapViewMode mapMode;
 	id < MRTileProvider > _tileProvider;
@@ -35,7 +36,7 @@ typedef enum {
   tile provider will be nil. It MUST be set in order to display any tiles
 */
 @property (nonatomic, retain) id < MRTileProvider > tileProvider;
-
+@property (nonatomic, retain) Map *map;
 // The default projection is MRMercatorProjection
 @property (nonatomic, retain) id < MRProjection > mapProjection;
 

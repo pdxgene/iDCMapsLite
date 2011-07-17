@@ -26,7 +26,7 @@
 
 
 // Offline mode
-- (NSData *)onfflineTileAtX:(NSUInteger)x y:(NSUInteger)y zoomLevel:(NSUInteger)zoom forMap:(Map *)aMap;
+- (NSData *)offlineTileAtX:(NSUInteger)x y:(NSUInteger)y zoomLevel:(NSUInteger)zoom forMap:(Map *)aMap;
 // Dispatches a new thread and flushes old caches from the disk
 - (void)flushOldCaches;
 
